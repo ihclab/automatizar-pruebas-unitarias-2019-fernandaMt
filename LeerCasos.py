@@ -80,6 +80,8 @@ def pintarResultados(resultados, time):
             print('\u001b[31m')
         pprint.pprint(resultado)
 
+def writeResults(results, time):
+    pass
 
 def main():
     start = time.time()
