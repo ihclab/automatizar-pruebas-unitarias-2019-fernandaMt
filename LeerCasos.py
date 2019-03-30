@@ -28,7 +28,7 @@ def conversionTipos(casos):
 
         for num in entradasList:
             if num == "NULL":
-                entradasConverted.append(0)
+                entradasConverted.append(0.0)
             else:
                 entradasConverted.append(float(num))
 
@@ -55,12 +55,10 @@ def probarCasos(casos):
             else:
                 caso['valido'] = 'Falla'
 
-            print(metodo)
-            print(round(result, 4))
-            print(esperado)
-
         except:
             print('Exception')
+            caso['result'] = 'Exception' 
+            caso['valido'] = 'Falla'
 
     return casos
 
