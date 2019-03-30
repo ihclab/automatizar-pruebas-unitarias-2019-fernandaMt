@@ -44,6 +44,7 @@ def probarCasos(casos):
     medias = Medias()
     for caso in casos:
         try:
+            #validacion del metodo ingresado
             metodo = getattr(Medias, caso['metodo'])
             result = metodo(medias, caso['entrada'])
             esperado = caso['esperado']
