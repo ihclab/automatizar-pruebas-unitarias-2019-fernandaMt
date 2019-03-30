@@ -4,9 +4,10 @@ def leerCasosPrueba(filename):
 
     for line in file:
         linelist = line.split(':')
+
         caso = {
             'no': linelist[0],
-            'funcion': linelist[1],
+            'metodo': linelist[1],
             'entrada': linelist[2],
             'salida': linelist[3],
         }
@@ -16,11 +17,29 @@ def leerCasosPrueba(filename):
     return casos
 
 
+def conversionTipos(casos):
+    for caso in casos:
+        entradasList = caso['entrada'].split(' ')
+        entradasConverted = []
+
+        for num in entradasList:
+            if num == "NULL":
+                entradasConverted.append(None)
+            else:
+                entradasConverted.append(float(num))
+
+        caso['entrada'] = entradasConverted
+
+        if caso['salida'] != 'Exception\n':
+            caso['salida'] = float(caso['salida'])
+
+    return casos
+
+
 def main():
     casos = leerCasosPrueba("CasosPrueba.txt")
-    for caso in casos:
-        if caso['no'] == '0005':
-            print(caso)
+    casosConverted = conversionTipos(casos)
+    print(casosConverted)
 
 
 if __name__ == "__main__":
