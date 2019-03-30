@@ -1,5 +1,6 @@
 from Medias import Medias
 import pprint
+import time
 
 
 def leerCasosPrueba(filename):
@@ -63,7 +64,15 @@ def probarCasos(casos):
 
     return casos
 
-def pintarResultados(resultados):
+def pintarResultados(resultados, time):
+    print('\u001b[44;1m')
+    print(" " * 50)
+    print("   PRUEBAS UNITARIAS AUTOMATIZADAS por Fernanda   ")
+    print(" " * 50)
+    print("   No de casos: {0:10d}".format(len(resultados)) + " " * 24)
+    print("   Tiempo de ejecucion: {0:3.9f} sec".format(time) + " " * 11)
+    print(" " * 50)
+    print('\u001b[0m')
     for resultado in resultados:
         if resultado['valido'] == 'Exito':
             print('\u001b[32m')
@@ -73,10 +82,12 @@ def pintarResultados(resultados):
 
 
 def main():
+    start = time.time()
     casos = leerCasosPrueba("CasosPrueba.txt")
     casosConverted = conversionTipos(casos)
     resultados = probarCasos(casosConverted)
-    pintarResultados(resultados)
+    executetime = time.time()-start
+    pintarResultados(resultados, executetime)
 
 
 if __name__ == "__main__":
