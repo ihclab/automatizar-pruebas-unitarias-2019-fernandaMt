@@ -63,12 +63,20 @@ def probarCasos(casos):
 
     return casos
 
+def pintarResultados(resultados):
+    for resultado in resultados:
+        if resultado['valido'] == 'Exito':
+            print('\u001b[32m')
+        else:
+            print('\u001b[31m')
+        pprint.pprint(resultado)
+
 
 def main():
     casos = leerCasosPrueba("CasosPrueba.txt")
     casosConverted = conversionTipos(casos)
     resultados = probarCasos(casosConverted)
-    pprint.pprint(resultados)
+    pintarResultados(resultados)
 
 
 if __name__ == "__main__":
